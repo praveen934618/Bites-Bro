@@ -1,0 +1,476 @@
+/* ==========================================================================
+   BitesBro — Navbar Component Styles
+   Theme: Warm Cream (#FEF3E2), Golden Amber (#F4AE52), Burnt Orange (#D4621A), Espresso Brown (#2A1A0E)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Header Container & Sticky Shell
+   -------------------------------------------------------------------------- */
+.bitesbro-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--color-bg-navbar);
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: background-color var(--transition-base),
+              border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+/* Elevation on scroll */
+.bitesbro-header--scrolled {
+  border-bottom-color: var(--color-border-medium);
+  box-shadow: var(--shadow-navbar-scrolled);
+}
+
+/* Inner Container */
+.navbar-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  height: var(--navbar-height-desktop);
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    height: var(--navbar-height-mobile);
+    padding: 0 var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Brand Identity Zone (Left)
+   -------------------------------------------------------------------------- */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  min-height: var(--touch-target-min);
+  padding: var(--space-1) var(--space-2);
+  margin-left: calc(-1 * var(--space-2));
+  border-radius: var(--radius-sm);
+  transition: opacity var(--transition-fast);
+}
+
+.navbar-brand:hover {
+  opacity: 0.92;
+}
+
+/* Wordmark: Bricolage Grotesque (24px Bold Desktop, 20px Mobile, WCAG AA 3:1 compliant for display) */
+.navbar-wordmark {
+  font-family: var(--font-brand);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: var(--letter-spacing-tighter);
+  line-height: 1;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+@media (max-width: 768px) {
+  .navbar-wordmark {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.navbar-wordmark__bites {
+  color: var(--color-espresso);
+}
+
+.navbar-wordmark__bro {
+  color: var(--color-orange);
+}
+
+/* Handcrafted Culinary Accent Dot */
+.navbar-wordmark__dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 2px;
+  background-color: var(--color-amber);
+  border-radius: var(--radius-pill);
+  align-self: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. Desktop Navigation Zone (Center)
+   Architectural, clean horizontal navigation without artificial pill wraps
+   -------------------------------------------------------------------------- */
+.navbar-nav-desktop {
+  display: flex;
+  align-items: center;
+  height: var(--navbar-height-desktop);
+}
+
+@media (max-width: 768px) {
+  .navbar-nav-desktop {
+    display: none;
+  }
+}
+
+.navbar-nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: var(--space-6);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.navbar-nav-link:hover {
+  color: var(--color-text-accent);
+}
+
+/* Active Link State */
+.navbar-nav-link--active {
+  color: var(--color-text-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Flush Bottom Underline Indicator */
+.navbar-nav-link__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background-color: var(--color-orange);
+  border-radius: var(--radius-pill) var(--radius-pill) 0 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. Customer Actions Zone (Right)
+   -------------------------------------------------------------------------- */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Accessible Icon Action Button */
+.navbar-icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  color: var(--color-espresso);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.navbar-icon-btn:hover {
+  color: var(--color-text-accent);
+  background-color: var(--color-hover-tint);
+}
+
+.navbar-icon-btn--active {
+  color: var(--color-text-accent);
+  background-color: var(--color-active-surface);
+}
+
+.navbar-icon-btn:active {
+  transform: scale(0.96);
+}
+
+/* Live Cart Badge (Rendered ONLY when count is verified > 0) */
+.navbar-cart-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-orange);
+  color: var(--color-cream);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-cream);
+  pointer-events: none;
+}
+
+/* High-Contrast Primary CTA Button (~15.27:1 WCAG AAA Contrast) */
+.navbar-btn-primary {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: var(--touch-target-min);
+  padding: 0 var(--space-5);
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+@media (min-width: 769px) {
+  .navbar-btn-primary {
+    display: inline-flex;
+  }
+}
+
+.navbar-btn-primary:hover {
+  background-color: var(--color-btn-primary-hover);
+  border-color: var(--color-amber);
+  box-shadow: 0 2px 8px rgba(42, 26, 14, 0.15);
+  transform: translateY(-1px);
+}
+
+.navbar-btn-primary:active {
+  background-color: var(--color-btn-primary-active);
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   5. Mobile Navigation Toggle (Hamburger)
+   -------------------------------------------------------------------------- */
+.navbar-mobile-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  color: var(--color-espresso);
+  background-color: transparent;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+@media (min-width: 769px) {
+  .navbar-mobile-toggle {
+    display: none;
+  }
+}
+
+.navbar-mobile-toggle:hover {
+  color: var(--color-text-accent);
+  background-color: var(--color-hover-tint);
+  border-color: var(--color-amber);
+}
+
+.navbar-mobile-toggle[aria-expanded="true"] {
+  background-color: var(--color-active-surface);
+  border-color: var(--color-orange);
+  color: var(--color-text-accent);
+}
+
+/* --------------------------------------------------------------------------
+   6. Mobile Menu Overlay & Drawer
+   -------------------------------------------------------------------------- */
+.mobile-nav-backdrop {
+  position: fixed;
+  top: var(--navbar-height-mobile);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(42, 26, 14, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base),
+              visibility var(--transition-base);
+}
+
+.mobile-nav-backdrop--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: var(--navbar-height-mobile);
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-navbar);
+  border-bottom: 2px solid var(--color-border-medium);
+  box-shadow: var(--shadow-dropdown);
+  z-index: 95;
+  max-height: calc(100vh - var(--navbar-height-mobile));
+  overflow-y: auto;
+  padding: var(--space-4) var(--space-4) var(--space-6);
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--transition-base),
+              opacity var(--transition-base),
+              visibility var(--transition-base);
+}
+
+.mobile-nav-drawer--open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 769px) {
+  .mobile-nav-backdrop,
+  .mobile-nav-drawer {
+    display: none !important;
+  }
+}
+
+/* Mobile Nav Items List */
+.mobile-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav-item {
+  width: 100%;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 52px;
+  padding: var(--space-3) var(--space-4);
+  background-color: transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-espresso);
+  font-family: var(--font-ui);
+  text-decoration: none;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast);
+}
+
+.mobile-nav-link:hover {
+  background-color: var(--color-hover-tint);
+  color: var(--color-text-accent);
+}
+
+.mobile-nav-link--active {
+  background-color: var(--color-active-surface);
+  color: var(--color-text-accent);
+  font-weight: var(--font-weight-semibold);
+  border-left: 3px solid var(--color-orange);
+}
+
+.mobile-nav-link__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-nav-link__label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.mobile-nav-link__desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.mobile-nav-link__icon {
+  color: var(--color-orange);
+  flex-shrink: 0;
+}
+
+/* Mobile Drawer Actions */
+.mobile-nav-cta {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mobile-nav-cta__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+.mobile-nav-cta__btn:hover {
+  background-color: var(--color-btn-primary-hover);
+}
+
+.mobile-nav-profile-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-espresso);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  border: 1px solid var(--color-border-subtle);
+  background-color: rgba(42, 26, 14, 0.02);
+}
+
+.mobile-nav-profile-link:hover {
+  background-color: var(--color-hover-tint);
+  color: var(--color-text-accent);
+}

@@ -1,0 +1,15 @@
+# Replace example.com with the approved production host.
+User-agent: *
+Allow: /
+Disallow: /me
+Disallow: /attendance
+Disallow: /history
+Disallow: /team/
+Disallow: /hr/
+Disallow: /audit/
+Disallow: /checkout
+Disallow: /orders/
+Disallow: /kitchen/
+Disallow: /admin/
+Disallow: /finance/
+Sitemap: https://example.com/sitemap.xml

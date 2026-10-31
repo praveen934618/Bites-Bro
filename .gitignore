@@ -1,0 +1,10 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.claude/settings.local.json
+source/BitesBro_Architect1_New_Visual_Architecture(1).pdf

@@ -1,0 +1,120 @@
+/* ==========================================================================
+   BitesBro — Design Tokens
+   Official Brand Palette: Warm Cream, Golden Amber, Burnt Orange, Espresso Brown
+   ========================================================================== */
+
+:root {
+  /* --------------------------------------------------------------------------
+     1. Brand Color Palette (Official Specification)
+     -------------------------------------------------------------------------- */
+  --color-cream: #FEF3E2;          /* Warm, welcoming canvas & surface ground */
+  --color-amber: #F4AE52;          /* Golden amber decorative highlights & accents (~1.74:1) */
+  --color-orange: #D4621A;         /* Burnt orange brand accent, indicators & large mark (~3.44:1) */
+  --color-orange-accessible: #943803; /* Deep Terracotta: ~6.77:1 contrast on Warm Cream (WCAG AA normal text) */
+  --color-espresso: #2A1A0E;       /* Deep espresso typography & high-contrast controls (~15.27:1) */
+
+  /* --------------------------------------------------------------------------
+     2. Semantic Colors & Verified Contrast Tokens (on Warm Cream #FEF3E2)
+     -------------------------------------------------------------------------- */
+  --color-bg-page: var(--color-cream);
+  --color-bg-navbar: var(--color-cream);
+  --color-surface-card: #FFFFFF;
+  --color-surface-elevated: #FFFDF9;
+
+  /* Typography Colors */
+  --color-text-primary: var(--color-espresso);       /* ~15.27:1 contrast (WCAG AAA) */
+  --color-text-secondary: #5E4F45;                  /* ~6.9:1 contrast (WCAG AA) */
+  --color-text-inverse: var(--color-cream);         /* ~15.27:1 contrast on espresso */
+  --color-text-accent: var(--color-orange-accessible); /* ~6.77:1 contrast on cream (WCAG AA) */
+
+  /* Borders & Dividers */
+  --color-border-subtle: rgba(42, 26, 14, 0.08);
+  --color-border-medium: rgba(42, 26, 14, 0.14);
+  --color-border-strong: rgba(42, 26, 14, 0.22);
+  --color-border-focus: var(--color-orange);
+
+  /* Interactive States & Tints */
+  --color-hover-tint: rgba(244, 174, 82, 0.14);
+  --color-hover-surface: rgba(42, 26, 14, 0.04);
+  --color-active-surface: rgba(42, 26, 14, 0.06);
+
+  /* High-Contrast Controls (~15.27:1) */
+  --color-btn-primary-bg: var(--color-espresso);
+  --color-btn-primary-text: var(--color-cream);
+  --color-btn-primary-hover: #3E2716;
+  --color-btn-primary-active: #1D1108;
+
+  /* Operational Indicators */
+  --color-indicator-active: var(--color-orange);
+
+  /* Semantic Feedback */
+  --color-success: #16845B;
+  --color-warning: #B7791F;
+  --color-danger: #C0393B;
+
+  /* --------------------------------------------------------------------------
+     3. Typography
+     -------------------------------------------------------------------------- */
+  --font-brand: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ui: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 0.9375rem;/* 15px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.5;
+
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-tighter: -0.04em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.02em;
+
+  /* --------------------------------------------------------------------------
+     4. Spacing Scale (4px baseline)
+     -------------------------------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* --------------------------------------------------------------------------
+     5. Component Geometry & Layout Limits
+     -------------------------------------------------------------------------- */
+  --navbar-height-desktop: 68px;
+  --navbar-height-mobile: 60px;
+  --max-content-width: 1200px;
+  --touch-target-min: 44px;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-navbar-scrolled: 0 4px 20px -2px rgba(42, 26, 14, 0.07);
+  --shadow-dropdown: 0 12px 30px -4px rgba(42, 26, 14, 0.12), 0 4px 10px -2px rgba(42, 26, 14, 0.06);
+
+  /* Transitions */
+  --transition-fast: 140ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}

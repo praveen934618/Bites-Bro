@@ -1,0 +1,17 @@
+{
+  "project": "BitesBro",
+  "productionOrigin": "https://example.com",
+  "sitemapPath": "/sitemap.xml",
+  "robotsPath": "/robots.txt",
+  "indexableRoutes": [
+    "/"
+  ],
+  "noindexRoutePrefixes": [
+    "/me",
+    "/checkout",
+    "/orders/",
+    "/kitchen/",
+    "/admin/",
+    "/finance/"
+  ]
+}
