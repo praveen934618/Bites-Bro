@@ -1,0 +1,666 @@
+/* ==========================================================================
+   BitesBro — Premium Homepage Hero Section Styles
+   Theme: Warm Cream (#FEF3E2), Golden Amber (#F4AE52), Burnt Orange (#D4621A), Espresso Brown (#2A1A0E)
+   Responsive Viewports: 1440px, 1024px, 768px, 590px, 390px, 360px
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Hero Section Shell & Layout Grid
+   -------------------------------------------------------------------------- */
+.bitesbro-hero {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-page);
+  overflow-x: clip;
+  overflow-y: visible;
+  padding: var(--space-10) 0 var(--space-12);
+}
+
+.hero-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--space-10);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .bitesbro-hero {
+    padding: var(--space-8) 0 var(--space-10);
+  }
+
+  .hero-container {
+    gap: var(--space-6);
+    padding: 0 var(--space-5);
+  }
+}
+
+@media (max-width: 768px) {
+  .bitesbro-hero {
+    padding: var(--space-6) 0 var(--space-10);
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    text-align: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .bitesbro-hero {
+    padding: var(--space-5) 0 var(--space-8);
+  }
+
+  .hero-container {
+    padding: 0 var(--space-4);
+    gap: var(--space-6);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Content Column: Typography & Actions
+   -------------------------------------------------------------------------- */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    align-items: center;
+  }
+}
+
+/* Category Kicker Badge */
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  background-color: rgba(244, 174, 82, 0.16);
+  border: 1px solid rgba(212, 98, 26, 0.22);
+  border-radius: var(--radius-pill);
+  color: var(--color-orange-accessible);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.hero-kicker__icon {
+  color: var(--color-orange);
+  display: flex;
+  align-items: center;
+}
+
+/* Main Display Headline */
+.hero-headline {
+  font-family: var(--font-brand);
+  font-size: clamp(2rem, 3.8vw + 0.5rem, 3.5rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.15;
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-espresso);
+  margin: 0 0 var(--space-4) 0;
+  text-wrap: balance;
+}
+
+.hero-headline__accent {
+  display: block;
+  color: var(--color-orange);
+  position: relative;
+}
+
+@media (max-width: 590px) {
+  .hero-headline__accent {
+    display: inline;
+  }
+}
+
+/* Lead Description */
+.hero-description {
+  font-family: var(--font-ui);
+  font-size: clamp(0.9375rem, 0.6vw + 0.75rem, 1.0625rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 500px;
+  margin: 0 0 var(--space-6) 0;
+}
+
+@media (max-width: 768px) {
+  .hero-description {
+    margin: 0 auto var(--space-6) auto;
+  }
+}
+
+/* Action Button Cluster */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 768px) {
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: var(--space-8);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: var(--space-3);
+  }
+}
+
+/* Primary High-Contrast CTA ("Explore Menu") */
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.hero-btn-primary:hover {
+  background-color: var(--color-btn-primary-hover);
+  border-color: var(--color-amber);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-dropdown);
+}
+
+.hero-btn-primary:active {
+  background-color: var(--color-btn-primary-active);
+  transform: translateY(0);
+}
+
+.hero-btn-primary:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+.hero-btn-primary__arrow {
+  transition: transform var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.hero-btn-primary:hover .hero-btn-primary__arrow {
+  transform: translateX(3px);
+}
+
+/* Secondary Action Link ("Track Orders") */
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 0 var(--space-5);
+  background-color: transparent;
+  color: var(--color-espresso);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.hero-btn-secondary:hover {
+  background-color: var(--color-hover-tint);
+  border-color: var(--color-amber);
+  color: var(--color-orange-accessible);
+  transform: translateY(-1px);
+}
+
+.hero-btn-secondary:active {
+  background-color: var(--color-active-surface);
+  transform: translateY(0);
+}
+
+.hero-btn-secondary:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Authentic Cloud Kitchen Trust Highlights
+   -------------------------------------------------------------------------- */
+.hero-trust-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 520px;
+  padding: var(--space-5) 0 0;
+  border-top: 1px solid var(--color-border-subtle);
+  list-style: none;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .hero-trust-list {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    text-align: left;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+.hero-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.hero-trust-icon {
+  color: var(--color-orange);
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-trust-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-trust-title {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-espresso);
+  line-height: 1.3;
+}
+
+.hero-trust-desc {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------------------
+   4. Visual Column: Culinary Artwork & Micro-Badges
+   -------------------------------------------------------------------------- */
+.hero-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero-dish-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .hero-dish-wrapper {
+    max-width: 400px;
+  }
+}
+
+/* Ambient Warm Halo Behind Dish */
+.hero-dish-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(244, 174, 82, 0.3) 0%, rgba(212, 98, 26, 0.12) 50%, transparent 72%);
+  border-radius: 50%;
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Focal Point Food Presentation */
+.hero-dish-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+  filter: drop-shadow(0 16px 24px rgba(42, 26, 14, 0.18));
+  transition: transform var(--transition-smooth);
+}
+
+.hero-dish-wrapper:hover .hero-dish-img {
+  transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   5. Authentic Detail Badges (Desktop Floating & Mobile Docked)
+   -------------------------------------------------------------------------- */
+.hero-floating-badge {
+  position: absolute;
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 10px 14px;
+  box-shadow: var(--shadow-floating);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+  max-width: 240px;
+  transition: transform var(--transition-base),
+              box-shadow var(--transition-base),
+              border-color var(--transition-base);
+}
+
+.hero-floating-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-dropdown);
+  border-color: var(--color-border-medium);
+}
+
+/* Desktop Placement: Securely within wrapper bounds (No negative offsets!) */
+.hero-floating-badge--top {
+  top: 14px;
+  right: 0;
+  animation: heroFloatSlow 5s ease-in-out infinite alternate;
+}
+
+.hero-floating-badge--bottom {
+  bottom: 14px;
+  left: 0;
+  animation: heroFloatReverse 5.5s ease-in-out infinite alternate;
+}
+
+.hero-badge-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(244, 174, 82, 0.22);
+  color: var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-badge-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-badge-title {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-espresso);
+  line-height: 1.25;
+}
+
+.hero-badge-subtitle {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   5b. Tablet & Mobile Responsive Stacking (No Overlap & No Clipping)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .hero-dish-wrapper {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 360px;
+    gap: var(--space-3);
+  }
+
+  .hero-dish-img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-dish-halo {
+    width: 280px;
+    height: 280px;
+    top: 160px;
+  }
+
+  /* Transition badges to non-overlapping companion cards docked below dish */
+  .hero-floating-badge {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    animation: none !important;
+    transform: none !important;
+    max-width: 280px;
+    width: 100%;
+    box-shadow: var(--shadow-card);
+  }
+
+  .hero-floating-badge--top {
+    margin-top: var(--space-2);
+  }
+
+  .hero-floating-badge--bottom {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero-dish-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 520px;
+  }
+
+  .hero-dish-img {
+    width: 100%;
+    flex-basis: 100%;
+    max-width: 320px;
+  }
+
+  .hero-floating-badge {
+    width: auto;
+    flex: 1 1 210px;
+    max-width: 250px;
+  }
+
+  .hero-floating-badge--top {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-dish-wrapper {
+    max-width: 280px;
+  }
+
+  .hero-dish-img {
+    max-width: 260px;
+  }
+
+  .hero-dish-halo {
+    width: 230px;
+    height: 230px;
+    top: 130px;
+  }
+
+  .hero-floating-badge {
+    padding: 8px 12px;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-dish-wrapper {
+    max-width: 250px;
+  }
+
+  .hero-dish-img {
+    max-width: 230px;
+  }
+
+  .hero-dish-halo {
+    width: 200px;
+    height: 200px;
+    top: 115px;
+  }
+
+  .hero-floating-badge {
+    padding: 8px 10px;
+    max-width: 240px;
+    gap: var(--space-2);
+  }
+
+  .hero-badge-title {
+    font-size: 11px;
+  }
+
+  .hero-badge-subtitle {
+    font-size: 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Keyframe Animations & Staggered Transitions
+   -------------------------------------------------------------------------- */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroFloatSlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heroFloatReverse {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(6px);
+  }
+}
+
+/* Staggered entrance applied to content groups */
+.hero-content > .hero-kicker {
+  animation: heroFadeUp 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-content > .hero-headline {
+  animation: heroFadeUp 550ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+.hero-content > .hero-description {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+}
+
+.hero-content > .hero-actions {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+}
+
+.hero-content > .hero-trust-list {
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
+}
+
+.hero-visual {
+  animation: heroScaleIn 700ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both;
+}
+
+/* --------------------------------------------------------------------------
+   7. Accessibility: Prefers Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > *,
+  .hero-visual,
+  .hero-floating-badge--top,
+  .hero-floating-badge--bottom,
+  .hero-btn-primary,
+  .hero-btn-secondary,
+  .hero-dish-img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

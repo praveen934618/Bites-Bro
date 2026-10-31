@@ -1,0 +1,427 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%" aria-hidden="true" role="img">
+  <defs>
+    <!-- ===================================================================
+         1. Lighting, Shadows & Depth Filters
+         =================================================================== -->
+    <!-- Soft Ambient Warmth Halo -->
+    <radialGradient id="haloWarmth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F4AE52" stop-opacity="0.38" />
+      <stop offset="45%" stop-color="#D4621A" stop-opacity="0.16" />
+      <stop offset="75%" stop-color="#FEF3E2" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#FEF3E2" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Table Contact Shadow (Occlusion) -->
+    <radialGradient id="tableOcclusion" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#140A04" stop-opacity="0.55" />
+      <stop offset="50%" stop-color="#2A1A0E" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#2A1A0E" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Stoneware Ceramic Bowl Shading -->
+    <radialGradient id="ceramicBody" cx="36%" cy="32%" r="68%">
+      <stop offset="0%" stop-color="#3D2616" />
+      <stop offset="35%" stop-color="#2A1A0E" />
+      <stop offset="70%" stop-color="#1C1109" />
+      <stop offset="100%" stop-color="#0F0804" />
+    </radialGradient>
+
+    <!-- Ceramic Rim Specular Sheen -->
+    <linearGradient id="ceramicRimGlint" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#F4AE52" stop-opacity="0.8" />
+      <stop offset="25%" stop-color="#FFE7C2" stop-opacity="0.9" />
+      <stop offset="55%" stop-color="#2A1A0E" stop-opacity="0.4" />
+      <stop offset="85%" stop-color="#F4AE52" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0F0804" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Inner Bowl Cavity Depth Shadow -->
+    <radialGradient id="innerCavityShadow" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#2A1A0E" stop-opacity="0.1" />
+      <stop offset="75%" stop-color="#1A0E06" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0D0703" stop-opacity="0.95" />
+    </radialGradient>
+
+    <!-- Seasoned Ancient Grains Bedding -->
+    <radialGradient id="grainsBase" cx="44%" cy="42%" r="56%">
+      <stop offset="0%" stop-color="#FFFDF7" />
+      <stop offset="40%" stop-color="#F8EEDB" />
+      <stop offset="75%" stop-color="#E9D6B3" />
+      <stop offset="100%" stop-color="#CBB186" />
+    </radialGradient>
+
+    <!-- Glazed Caramelized Protein Gradients -->
+    <linearGradient id="proteinCore" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#EA6F24" />
+      <stop offset="25%" stop-color="#D4621A" />
+      <stop offset="60%" stop-color="#943803" />
+      <stop offset="85%" stop-color="#672501" />
+      <stop offset="100%" stop-color="#3B1400" />
+    </linearGradient>
+
+    <linearGradient id="teriyakiGlazeSheen" x1="0%" y1="0%" x2="100%" y2="40%">
+      <stop offset="0%" stop-color="#FFF3E0" stop-opacity="0.85" />
+      <stop offset="35%" stop-color="#F4AE52" stop-opacity="0.6" />
+      <stop offset="75%" stop-color="#D4621A" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#943803" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Avocado Slices Gradient -->
+    <linearGradient id="avocadoFleshGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#2D5A16" />
+      <stop offset="18%" stop-color="#558B2F" />
+      <stop offset="48%" stop-color="#7CB342" />
+      <stop offset="78%" stop-color="#AED581" />
+      <stop offset="94%" stop-color="#DCEDC8" />
+      <stop offset="100%" stop-color="#F1F8E9" />
+    </linearGradient>
+
+    <!-- Charred Greens Gradient -->
+    <linearGradient id="charredGreensGrad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#388E3C" />
+      <stop offset="30%" stop-color="#2E7D32" />
+      <stop offset="65%" stop-color="#1B5E20" />
+      <stop offset="90%" stop-color="#123B15" />
+      <stop offset="100%" stop-color="#0A1F0C" />
+    </linearGradient>
+
+    <!-- Pickled Watermelon Radish / Ribbon -->
+    <linearGradient id="pickledRibbonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F48FB1" />
+      <stop offset="30%" stop-color="#EC407A" />
+      <stop offset="70%" stop-color="#C2185B" />
+      <stop offset="100%" stop-color="#880E4F" />
+    </linearGradient>
+
+    <!-- Sweet Corn Butter Glaze -->
+    <radialGradient id="cornKernelGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF9C4" />
+      <stop offset="40%" stop-color="#FDD835" />
+      <stop offset="75%" stop-color="#F57F17" />
+      <stop offset="100%" stop-color="#BF360C" />
+    </radialGradient>
+
+    <!-- Fresh Edamame Pod Gradient -->
+    <radialGradient id="edamameGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#C8E6C9" />
+      <stop offset="40%" stop-color="#66BB6A" />
+      <stop offset="80%" stop-color="#388E3C" />
+      <stop offset="100%" stop-color="#1B5E20" />
+    </radialGradient>
+
+    <!-- Gaussian Blur Filters for Soft Depth & Steam -->
+    <filter id="softGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" />
+    </filter>
+
+    <filter id="bowlDropShadow" x="-30%" y="-20%" width="160%" height="150%">
+      <feDropShadow dx="0" dy="28" stdDeviation="32" flood-color="#140A04" flood-opacity="0.32" />
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#943803" flood-opacity="0.18" />
+    </filter>
+
+    <filter id="ingredientDepth" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#1C1109" flood-opacity="0.3" />
+    </filter>
+
+    <filter id="sliceOcclusion" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="-2" dy="3" stdDeviation="3" flood-color="#1A0E06" flood-opacity="0.38" />
+    </filter>
+
+    <filter id="steamBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+  </defs>
+
+  <!-- ===================================================================
+       1. AMBIENT WARMTH & TABLE SHADOWS
+       =================================================================== -->
+  <!-- Ambient Kitchen Glow -->
+  <circle cx="300" cy="300" r="280" fill="url(#haloWarmth)" />
+
+  <!-- Soft Diffuse Table Shadow -->
+  <ellipse cx="300" cy="505" rx="230" ry="46" fill="url(#tableOcclusion)" />
+  <ellipse cx="300" cy="495" rx="180" ry="28" fill="#140A04" opacity="0.3" />
+
+  <!-- ===================================================================
+       2. CERAMIC STONEWARE BOWL (True 3D Artisan Craft)
+       =================================================================== -->
+  <g filter="url(#bowlDropShadow)">
+    <!-- Bowl Outer Shell Body -->
+    <ellipse cx="300" cy="326" rx="226" ry="192" fill="url(#ceramicBody)" />
+
+    <!-- Exterior Bowl Ceramic Texture / Subtle Matte Glaze Ring -->
+    <ellipse cx="300" cy="336" rx="218" ry="176" fill="none" stroke="#F4AE52" stroke-width="1.2" opacity="0.15" />
+    <ellipse cx="300" cy="342" rx="208" ry="162" fill="none" stroke="#FEF3E2" stroke-width="0.8" opacity="0.1" />
+
+    <!-- Ceramic Bowl Rim Edge (Bevelled Glaze Lip) -->
+    <ellipse cx="300" cy="318" rx="220" ry="184" fill="none" stroke="url(#ceramicRimGlint)" stroke-width="5" />
+    <ellipse cx="300" cy="317" rx="218" ry="182" fill="none" stroke="#FFE9C7" stroke-width="1.5" opacity="0.8" />
+
+    <!-- Inner Cavity Depth Shadow -->
+    <ellipse cx="300" cy="320" rx="210" ry="174" fill="#120A05" />
+    <ellipse cx="300" cy="320" rx="210" ry="174" fill="url(#innerCavityShadow)" />
+  </g>
+
+  <!-- ===================================================================
+       3. ANCIENT GRAINS & JASMINE RICE BED
+       =================================================================== -->
+  <ellipse cx="300" cy="326" rx="198" ry="162" fill="url(#grainsBase)" />
+  <!-- Grain Texture & Granules Layer -->
+  <g fill="#C9B185" opacity="0.5">
+    <ellipse cx="230" cy="320" rx="3.5" ry="1.8" transform="rotate(22 230 320)" />
+    <ellipse cx="248" cy="335" rx="3.8" ry="1.9" transform="rotate(-18 248 335)" />
+    <ellipse cx="270" cy="315" rx="3.6" ry="1.7" transform="rotate(35 270 315)" />
+    <ellipse cx="310" cy="340" rx="3.7" ry="1.8" transform="rotate(-12 310 340)" />
+    <ellipse cx="345" cy="322" rx="3.5" ry="1.7" transform="rotate(40 345 322)" />
+    <ellipse cx="370" cy="345" rx="3.8" ry="1.9" transform="rotate(-30 370 345)" />
+    <ellipse cx="285" cy="365" rx="3.6" ry="1.8" transform="rotate(15 285 365)" />
+    <ellipse cx="260" cy="355" rx="3.5" ry="1.7" transform="rotate(-40 260 355)" />
+    <ellipse cx="330" cy="360" rx="3.7" ry="1.8" transform="rotate(25 330 360)" />
+  </g>
+  <!-- Red Quinoa Granules -->
+  <g fill="#943803" opacity="0.45">
+    <circle cx="240" cy="310" r="1.4" />
+    <circle cx="262" cy="330" r="1.5" />
+    <circle cx="295" cy="325" r="1.6" />
+    <circle cx="335" cy="335" r="1.5" />
+    <circle cx="360" cy="330" r="1.4" />
+    <circle cx="275" cy="375" r="1.5" />
+    <circle cx="315" cy="355" r="1.6" />
+    <circle cx="350" cy="360" r="1.5" />
+  </g>
+
+  <!-- ===================================================================
+       4. FLAME-CHARRED BROCCOLINI & BABY GREENS (Left Zone)
+       =================================================================== -->
+  <g filter="url(#ingredientDepth)">
+    <!-- Broccolini Stems -->
+    <path d="M 185 325 C 175 355, 195 385, 215 395" stroke="#2E7D32" stroke-width="7" stroke-linecap="round" fill="none" />
+    <path d="M 185 325 C 175 355, 195 385, 215 395" stroke="#1B5E20" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.6" />
+    <path d="M 160 300 C 150 330, 168 360, 190 375" stroke="#388E3C" stroke-width="6.5" stroke-linecap="round" fill="none" />
+
+    <!-- Large Tenderstem Floret 1 -->
+    <path d="M 148 275 C 130 250, 162 225, 186 235 C 206 218, 238 238, 232 268 C 244 288, 222 322, 194 312 C 172 324, 142 302, 148 275 Z" fill="url(#charredGreensGrad)" />
+    <!-- Floret Texture Beads & Clusters -->
+    <circle cx="170" cy="252" r="11" fill="#43A047" opacity="0.85" />
+    <circle cx="196" cy="245" r="13" fill="#2E7D32" />
+    <circle cx="218" cy="265" r="12" fill="#1B5E20" />
+    <circle cx="178" cy="282" r="11" fill="#2E7D32" />
+    <circle cx="204" cy="292" r="12" fill="#1B5E20" />
+    <circle cx="158" cy="275" r="10" fill="#388E3C" />
+    <!-- Charred Floret Tips -->
+    <path d="M 186 235 C 195 230, 208 232, 215 238" stroke="#102512" stroke-width="3" stroke-linecap="round" fill="none" />
+    <ellipse cx="225" cy="258" rx="4" ry="2" fill="#0C1D0E" />
+    <ellipse cx="160" cy="260" rx="3" ry="2" fill="#0C1D0E" />
+
+    <!-- Second Floret Cluster (Lower Left) -->
+    <path d="M 175 320 C 160 302, 185 282, 208 288 C 224 278, 248 296, 240 318 C 250 336, 228 360, 206 352 C 185 360, 168 340, 175 320 Z" fill="url(#charredGreensGrad)" />
+    <circle cx="195" cy="312" r="9" fill="#43A047" opacity="0.8" />
+    <circle cx="218" cy="308" r="10" fill="#2E7D32" />
+    <circle cx="224" cy="330" r="11" fill="#1B5E20" />
+    <circle cx="198" cy="338" r="9" fill="#2E7D32" />
+    <!-- Char marks -->
+    <ellipse cx="236" cy="312" rx="3.5" ry="2" fill="#0D2010" />
+
+    <!-- Glistening Olive-Oil Highlights -->
+    <path d="M 188 248 Q 198 242 208 248" stroke="#A5D6A7" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.8" />
+    <path d="M 166 268 Q 174 262 182 266" stroke="#C8E6C9" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.75" />
+    <path d="M 212 300 Q 218 294 225 298" stroke="#A5D6A7" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.8" />
+  </g>
+
+  <!-- ===================================================================
+       5. FIRE-BLISTERED SWEET CORN & EDAMAME (Lower Arc)
+       =================================================================== -->
+  <g filter="url(#ingredientDepth)">
+    <!-- Steamed Edamame Trio -->
+    <ellipse cx="228" cy="378" rx="15" ry="9" fill="url(#edamameGrad)" transform="rotate(-25 228 378)" />
+    <ellipse cx="248" cy="396" rx="14" ry="8.5" fill="url(#edamameGrad)" transform="rotate(12 248 396)" />
+    <ellipse cx="216" cy="405" rx="13" ry="8" fill="url(#edamameGrad)" transform="rotate(-40 216 405)" />
+    <!-- Edamame Highlights -->
+    <path d="M 222 374 Q 228 370 234 374" stroke="#E8F5E9" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.8" />
+    <path d="M 243 392 Q 248 388 254 392" stroke="#E8F5E9" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.8" />
+
+    <!-- Sweet Corn Medley (Layer 1) -->
+    <ellipse cx="265" cy="415" rx="7" ry="9" fill="url(#cornKernelGrad)" transform="rotate(8 265 415)" />
+    <ellipse cx="282" cy="422" rx="7.5" ry="9.5" fill="url(#cornKernelGrad)" transform="rotate(-6 282 422)" />
+    <ellipse cx="300" cy="425" rx="7" ry="9" fill="url(#cornKernelGrad)" transform="rotate(14 300 425)" />
+    <ellipse cx="318" cy="420" rx="7.5" ry="9.5" fill="url(#cornKernelGrad)" transform="rotate(-14 318 420)" />
+    <ellipse cx="335" cy="412" rx="7" ry="9" fill="url(#cornKernelGrad)" transform="rotate(22 335 412)" />
+    <ellipse cx="352" cy="400" rx="6.5" ry="8.5" fill="url(#cornKernelGrad)" transform="rotate(-25 352 400)" />
+
+    <!-- Sweet Corn Medley (Layer 2 - Upper Infill) -->
+    <ellipse cx="274" cy="402" rx="6.5" ry="8" fill="url(#cornKernelGrad)" transform="rotate(-20 274 402)" />
+    <ellipse cx="292" cy="408" rx="7" ry="8.5" fill="url(#cornKernelGrad)" transform="rotate(6 292 408)" />
+    <ellipse cx="310" cy="406" rx="6.8" ry="8.2" transform="rotate(-10 310 406)" fill="url(#cornKernelGrad)" />
+    <ellipse cx="328" cy="398" rx="6.6" ry="8" transform="rotate(16 328 398)" fill="url(#cornKernelGrad)" />
+
+    <!-- Charred Roasted Flecks on Corn -->
+    <ellipse cx="282" cy="420" rx="2.5" ry="1.2" fill="#4E342E" />
+    <ellipse cx="300" cy="424" rx="2" ry="1" fill="#3E2723" />
+    <ellipse cx="318" cy="418" rx="2.4" ry="1.4" fill="#4E342E" />
+    <ellipse cx="292" cy="407" rx="1.8" ry="1" fill="#4E342E" />
+
+    <!-- Corn Specular Highlights -->
+    <circle cx="280" cy="419" r="1" fill="#FFFDE7" opacity="0.9" />
+    <circle cx="298" cy="422" r="1" fill="#FFFDE7" opacity="0.9" />
+    <circle cx="316" cy="417" r="1" fill="#FFFDE7" opacity="0.9" />
+  </g>
+
+  <!-- ===================================================================
+       6. ARTISANAL SLICED HAAS AVOCADO FAN (Top-Right Arc)
+       =================================================================== -->
+  <g>
+    <!-- Slice 1 (Deepest base slice) -->
+    <g filter="url(#sliceOcclusion)">
+      <path d="M 326 212 C 378 180, 436 210, 452 264 C 458 282, 424 294, 408 276 C 390 244, 354 228, 326 212 Z" fill="url(#avocadoFleshGrad)" />
+      <!-- Dark Pebble Skin -->
+      <path d="M 436 210 C 454 232, 462 258, 452 264" stroke="#1B3A0F" stroke-width="4.5" fill="none" stroke-linecap="round" />
+    </g>
+
+    <!-- Slice 2 -->
+    <g filter="url(#sliceOcclusion)">
+      <path d="M 342 228 C 394 196, 450 226, 464 280 C 470 298, 436 310, 420 292 C 402 260, 368 244, 342 228 Z" fill="url(#avocadoFleshGrad)" />
+      <path d="M 450 226 C 466 248, 474 274, 464 280" stroke="#1B3A0F" stroke-width="4.5" fill="none" stroke-linecap="round" />
+    </g>
+
+    <!-- Slice 3 -->
+    <g filter="url(#sliceOcclusion)">
+      <path d="M 358 244 C 410 212, 464 242, 476 296 C 482 314, 448 326, 432 308 C 414 276, 384 260, 358 244 Z" fill="url(#avocadoFleshGrad)" />
+      <path d="M 464 242 C 478 264, 486 290, 476 296" stroke="#1B3A0F" stroke-width="4.5" fill="none" stroke-linecap="round" />
+    </g>
+
+    <!-- Slice 4 (Topmost Hero Slice) -->
+    <g filter="url(#sliceOcclusion)">
+      <path d="M 374 262 C 424 230, 474 260, 484 314 C 488 330, 454 342, 438 324 C 420 294, 398 278, 374 262 Z" fill="url(#avocadoFleshGrad)" />
+      <path d="M 474 260 C 486 282, 492 308, 484 314" stroke="#1B3A0F" stroke-width="4.5" fill="none" stroke-linecap="round" />
+      <!-- Flaky Sea Salt Crystals on Top Slice -->
+      <polygon points="418,290 422,291 421,294 417,293" fill="#FFFFFF" opacity="0.85" />
+      <polygon points="432,305 435,306 434,309 431,308" fill="#FFFFFF" opacity="0.9" />
+      <polygon points="445,315 448,316 447,318 444,317" fill="#FFFFFF" opacity="0.8" />
+    </g>
+  </g>
+
+  <!-- ===================================================================
+       7. SIGNATURE GLAZED PROTEIN MEDALLIONS (Savory Caramelized Focal Point)
+       =================================================================== -->
+  <g filter="url(#ingredientDepth)">
+    <!-- Medallion 1 (Left Centerpiece) -->
+    <g>
+      <!-- Base Seared Fillet Geometry -->
+      <path d="M 226 292 C 274 258, 345 268, 352 322 C 358 372, 292 394, 244 372 C 200 350, 195 312, 226 292 Z" fill="url(#proteinCore)" />
+
+      <!-- Deep Char Grill Sear Marks (Angled Kitchen Fire Grate) -->
+      <path d="M 235 312 Q 284 300 334 316" stroke="#260C00" stroke-width="4.2" stroke-linecap="round" fill="none" opacity="0.85" />
+      <path d="M 242 334 Q 286 322 330 340" stroke="#260C00" stroke-width="3.8" stroke-linecap="round" fill="none" opacity="0.8" />
+      <path d="M 252 355 Q 288 346 320 360" stroke="#260C00" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75" />
+
+      <!-- High-Gloss Caramelized Specular Glaze -->
+      <path d="M 242 288 C 276 268, 326 278, 342 308" stroke="url(#teriyakiGlazeSheen)" stroke-width="7" stroke-linecap="round" fill="none" />
+      <path d="M 254 284 Q 285 272 316 282" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85" />
+
+      <!-- Glaze Droplet Reflection -->
+      <ellipse cx="270" cy="288" rx="3.5" ry="2" fill="#FFF8E1" opacity="0.9" />
+      <ellipse cx="320" cy="302" rx="3" ry="1.8" fill="#FFF8E1" opacity="0.85" />
+    </g>
+
+    <!-- Medallion 2 (Right Centerpiece - Overlapping) -->
+    <g transform="translate(46, 32)">
+      <!-- Base Fillet Geometry -->
+      <path d="M 252 276 C 302 244, 372 254, 378 308 C 384 356, 320 376, 272 354 C 228 332, 222 296, 252 276 Z" fill="url(#proteinCore)" />
+
+      <!-- Grill Seared Lines -->
+      <path d="M 262 298 Q 312 286 360 302" stroke="#260C00" stroke-width="4.2" stroke-linecap="round" fill="none" opacity="0.85" />
+      <path d="M 268 320 Q 312 308 356 326" stroke="#260C00" stroke-width="3.8" stroke-linecap="round" fill="none" opacity="0.8" />
+      <path d="M 278 340 Q 312 332 344 345" stroke="#260C00" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.75" />
+
+      <!-- High-Gloss Glaze Sheen -->
+      <path d="M 268 272 C 302 252, 350 262, 368 292" stroke="url(#teriyakiGlazeSheen)" stroke-width="7" stroke-linecap="round" fill="none" />
+      <path d="M 280 268 Q 312 256 342 268" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85" />
+
+      <!-- Specular Glaze Droplet -->
+      <ellipse cx="296" cy="272" rx="3.5" ry="2" fill="#FFF8E1" opacity="0.9" />
+      <ellipse cx="344" cy="286" rx="3" ry="1.8" fill="#FFF8E1" opacity="0.85" />
+    </g>
+  </g>
+
+  <!-- ===================================================================
+       8. PICKLED WATERMELON RADISH & ONION RIBBONS (Luminous Accents)
+       =================================================================== -->
+  <g filter="url(#ingredientDepth)">
+    <!-- Swirling Crimson Pickled Ribbon 1 -->
+    <path d="M 314 256 C 326 232, 354 238, 342 262 C 330 280, 306 268, 322 292" fill="none" stroke="url(#pickledRibbonGrad)" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M 314 256 C 326 232, 354 238, 342 262" fill="none" stroke="#F8BBD0" stroke-width="1.2" stroke-linecap="round" opacity="0.85" />
+
+    <!-- Pickled Ribbon 2 -->
+    <path d="M 286 272 C 298 248, 324 254, 318 276 C 312 294, 288 286, 306 304" fill="none" stroke="url(#pickledRibbonGrad)" stroke-width="3.8" stroke-linecap="round" />
+    <path d="M 286 272 C 298 248, 324 254, 318 276" fill="none" stroke="#F8BBD0" stroke-width="1" stroke-linecap="round" opacity="0.85" />
+  </g>
+
+  <!-- ===================================================================
+       9. SCALLION RINGS, MICRO-GREENS & CULINARY GARNISHES
+       =================================================================== -->
+  <!-- Fresh Scallion Rounds (Emerald Outer, Pale Ivory Core) -->
+  <g>
+    <!-- Scallion Ring 1 -->
+    <ellipse cx="282" cy="295" rx="5" ry="3.2" fill="#2E7D32" transform="rotate(-25 282 295)" />
+    <ellipse cx="282" cy="295" rx="2.8" ry="1.6" fill="#DCEDC8" transform="rotate(-25 282 295)" />
+
+    <!-- Scallion Ring 2 -->
+    <ellipse cx="328" cy="285" rx="5.2" ry="3.4" fill="#2E7D32" transform="rotate(35 328 285)" />
+    <ellipse cx="328" cy="285" rx="3" ry="1.8" fill="#DCEDC8" transform="rotate(35 328 285)" />
+
+    <!-- Scallion Ring 3 -->
+    <ellipse cx="310" cy="318" rx="4.8" ry="3" fill="#2E7D32" transform="rotate(-10 310 318)" />
+    <ellipse cx="310" cy="318" rx="2.6" ry="1.4" fill="#DCEDC8" transform="rotate(-10 310 318)" />
+
+    <!-- Scallion Ring 4 -->
+    <ellipse cx="355" cy="326" rx="5" ry="3.2" fill="#2E7D32" transform="rotate(45 355 326)" />
+    <ellipse cx="355" cy="326" rx="2.8" ry="1.6" fill="#DCEDC8" transform="rotate(45 355 326)" />
+  </g>
+
+  <!-- Micro-Cilantro Sprigs -->
+  <g fill="#43A047" filter="url(#ingredientDepth)">
+    <!-- Sprig 1 -->
+    <path d="M 296 288 Q 302 276 312 282 Q 304 294 296 288 Z" />
+    <path d="M 294 290 Q 288 282 280 288 Q 288 296 294 290 Z" />
+    <!-- Sprig 2 -->
+    <path d="M 338 312 Q 346 300 356 306 Q 348 318 338 312 Z" />
+    <path d="M 336 314 Q 328 306 322 314 Q 330 322 336 314 Z" />
+  </g>
+
+  <!-- Toasted Golden Sesame Seeds -->
+  <g fill="#FFF9E6" opacity="0.95">
+    <ellipse cx="266" cy="302" rx="1.8" ry="3.4" transform="rotate(28 266 302)" />
+    <ellipse cx="280" cy="316" rx="1.8" ry="3.4" transform="rotate(-38 280 316)" />
+    <ellipse cx="304" cy="326" rx="1.8" ry="3.4" transform="rotate(12 304 326)" />
+    <ellipse cx="326" cy="302" rx="1.8" ry="3.4" transform="rotate(62 326 302)" />
+    <ellipse cx="344" cy="322" rx="1.8" ry="3.4" transform="rotate(-18 344 322)" />
+    <ellipse cx="294" cy="340" rx="1.8" ry="3.4" transform="rotate(42 294 340)" />
+    <ellipse cx="360" cy="338" rx="1.8" ry="3.4" transform="rotate(-52 360 338)" />
+    <ellipse cx="258" cy="332" rx="1.8" ry="3.4" transform="rotate(18 258 332)" />
+  </g>
+
+  <!-- Toasted Black Sesame Seeds (Rich Visual Punctuation) -->
+  <g fill="#140A04" opacity="0.9">
+    <ellipse cx="274" cy="308" rx="1.7" ry="3.2" transform="rotate(-24 274 308)" />
+    <ellipse cx="312" cy="314" rx="1.7" ry="3.2" transform="rotate(48 312 314)" />
+    <ellipse cx="336" cy="312" rx="1.7" ry="3.2" transform="rotate(-28 336 312)" />
+    <ellipse cx="286" cy="328" rx="1.7" ry="3.2" transform="rotate(8 286 328)" />
+    <ellipse cx="350" cy="330" rx="1.7" ry="3.2" transform="rotate(-34 350 330)" />
+  </g>
+
+  <!-- Ito Togarashi (Fine Artisan Chili Threads) -->
+  <path d="M 302 284 Q 312 270 324 286 Q 334 300 346 294" stroke="#D4621A" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85" />
+  <path d="M 288 300 Q 304 290 318 306 Q 328 318 338 310" stroke="#E64A19" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.8" />
+
+  <!-- ===================================================================
+       10. SOFT AROMATIC WARMTH & STEAM WISPS
+       =================================================================== -->
+  <g fill="none" stroke="#F4AE52" stroke-width="3" stroke-linecap="round" opacity="0.4" filter="url(#steamBlur)">
+    <!-- Steam plume 1 (Left) -->
+    <path d="M 258 205 Q 244 175 260 148 Q 278 120 268 90" />
+    <!-- Steam plume 2 (Center) -->
+    <path d="M 308 190 Q 324 160 312 130 Q 300 102 314 74" />
+    <!-- Steam plume 3 (Right) -->
+    <path d="M 355 200 Q 370 172 358 144 Q 346 116 360 88" />
+  </g>
+</svg>
