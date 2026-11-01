@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true">
+  <defs>
+    <radialGradient id="lotusBg" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#F4AE52" stop-opacity="0.28" />
+      <stop offset="70%" stop-color="#FEF3E2" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#FDF0D9" />
+    </radialGradient>
+    <linearGradient id="lotusGlaze" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7043" />
+      <stop offset="45%" stop-color="#D4621A" />
+      <stop offset="85%" stop-color="#943803" />
+      <stop offset="100%" stop-color="#4E1702" />
+    </linearGradient>
+    <linearGradient id="lotusCrisp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE1A9" />
+      <stop offset="50%" stop-color="#E29E38" />
+      <stop offset="100%" stop-color="#9E5912" />
+    </linearGradient>
+    <filter id="lotusDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#2A1A0E" flood-opacity="0.18" />
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="url(#lotusBg)" />
+  <ellipse cx="200" cy="245" rx="120" ry="22" fill="#2A1A0E" opacity="0.15" />
+
+  <!-- Matte Black Stoneware Plate -->
+  <g filter="url(#lotusDrop)">
+    <ellipse cx="200" cy="155" rx="125" ry="95" fill="#2A1A0E" />
+    <ellipse cx="200" cy="150" rx="120" ry="90" fill="none" stroke="#D4621A" stroke-width="2" opacity="0.5" />
+    <ellipse cx="200" cy="152" rx="112" ry="82" fill="#180F08" />
+  </g>
+
+  <!-- Sweet Chilli Jam Glaze Pool on Plate -->
+  <ellipse cx="200" cy="155" rx="90" ry="60" fill="url(#lotusGlaze)" opacity="0.3" />
+  <path d="M 140 160 Q 185 145 230 165 Q 260 175 250 155" stroke="#D4621A" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.4" />
+
+  <!-- Lotus Root Wheel 1 (Center-Left, Tilted) -->
+  <g transform="translate(160, 150) rotate(-15)">
+    <ellipse cx="0" cy="0" rx="36" ry="28" fill="url(#lotusCrisp)" stroke="#874305" stroke-width="2" />
+    <ellipse cx="0" cy="0" rx="33" ry="25" fill="url(#lotusGlaze)" opacity="0.75" />
+    <!-- Center Hole -->
+    <ellipse cx="0" cy="0" rx="6.5" ry="5.5" fill="#180F08" />
+    <!-- Surrounding Perforations (Lotus Root Pattern) -->
+    <ellipse cx="-16" cy="0" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="16" cy="0" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="-11" cy="-12" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="11" cy="-12" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="-11" cy="12" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="11" cy="12" rx="5" ry="4" fill="#180F08" />
+    <!-- Glaze sheen -->
+    <path d="M -20 -15 Q 0 -22 20 -15" stroke="#FFE0B2" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8" />
+  </g>
+
+  <!-- Lotus Root Wheel 2 (Center-Right, Overlapping) -->
+  <g transform="translate(225, 145) rotate(25)">
+    <ellipse cx="0" cy="0" rx="38" ry="30" fill="url(#lotusCrisp)" stroke="#874305" stroke-width="2" />
+    <ellipse cx="0" cy="0" rx="35" ry="27" fill="url(#lotusGlaze)" opacity="0.85" />
+    <!-- Center Hole -->
+    <ellipse cx="0" cy="0" rx="7" ry="6" fill="#180F08" />
+    <!-- Surrounding Perforations -->
+    <ellipse cx="-17" cy="0" rx="5.5" ry="4.5" fill="#180F08" />
+    <ellipse cx="17" cy="0" rx="5.5" ry="4.5" fill="#180F08" />
+    <ellipse cx="-12" cy="-13" rx="5.5" ry="4.5" fill="#180F08" />
+    <ellipse cx="12" cy="-13" rx="5.5" ry="4.5" fill="#180F08" />
+    <ellipse cx="-12" cy="13" rx="5.5" ry="4.5" fill="#180F08" />
+    <ellipse cx="12" cy="13" rx="5.5" ry="4.5" fill="#180F08" />
+    <!-- Glaze sheen -->
+    <path d="M -22 -16 Q 0 -24 22 -16" stroke="#FFE0B2" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.85" />
+  </g>
+
+  <!-- Lotus Root Wheel 3 (Foreground, Center) -->
+  <g transform="translate(195, 175) rotate(5)">
+    <ellipse cx="0" cy="0" rx="34" ry="26" fill="url(#lotusCrisp)" stroke="#874305" stroke-width="1.8" />
+    <ellipse cx="0" cy="0" rx="31" ry="23" fill="url(#lotusGlaze)" opacity="0.8" />
+    <!-- Center Hole -->
+    <ellipse cx="0" cy="0" rx="6" ry="5" fill="#180F08" />
+    <!-- Surrounding Perforations -->
+    <ellipse cx="-15" cy="0" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="15" cy="0" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="-10" cy="-11" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="10" cy="-11" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="-10" cy="11" rx="5" ry="4" fill="#180F08" />
+    <ellipse cx="10" cy="11" rx="5" ry="4" fill="#180F08" />
+    <!-- Glaze sheen -->
+    <path d="M -18 -14 Q 0 -20 18 -14" stroke="#FFE0B2" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8" />
+  </g>
+
+  <!-- Scallions / Spring Onion Rings -->
+  <g stroke="#2E7D32" stroke-width="2.5" fill="#81C784">
+    <ellipse cx="160" cy="130" rx="5" ry="3.5" transform="rotate(20 160 130)" />
+    <ellipse cx="230" cy="125" rx="5.5" ry="4" transform="rotate(-30 230 125)" />
+    <ellipse cx="185" cy="148" rx="5" ry="3.5" transform="rotate(15 185 148)" />
+    <ellipse cx="215" cy="165" rx="5.5" ry="4" transform="rotate(-10 215 165)" />
+    <ellipse cx="150" cy="175" rx="4.5" ry="3" transform="rotate(40 150 175)" />
+  </g>
+
+  <!-- Crushed Kashmiri Chili Flakes -->
+  <polygon points="172,142 176,145 174,148 170,146" fill="#C62828" />
+  <polygon points="210,135 214,138 212,141 208,139" fill="#C62828" />
+  <polygon points="240,158 244,161 242,164 238,162" fill="#C62828" />
+  <polygon points="180,185 184,188 182,191 178,189" fill="#C62828" />
+
+  <!-- Toasted White Sesame Seeds (Abundant) -->
+  <g fill="#FFFDF5" opacity="0.95">
+    <ellipse cx="145" cy="140" rx="1.8" ry="3" transform="rotate(25 145 140)" />
+    <ellipse cx="170" cy="135" rx="1.8" ry="3" transform="rotate(-30 170 135)" />
+    <ellipse cx="182" cy="155" rx="1.8" ry="3" transform="rotate(45 182 155)" />
+    <ellipse cx="205" cy="140" rx="1.8" ry="3" transform="rotate(-15 205 140)" />
+    <ellipse cx="220" cy="152" rx="1.8" ry="3" transform="rotate(35 220 152)" />
+    <ellipse cx="240" cy="135" rx="1.8" ry="3" transform="rotate(-40 240 135)" />
+    <ellipse cx="250" cy="150" rx="1.8" ry="3" transform="rotate(20 250 150)" />
+    <ellipse cx="195" cy="182" rx="1.8" ry="3" transform="rotate(10 195 182)" />
+    <ellipse cx="210" cy="188" rx="1.8" ry="3" transform="rotate(-25 210 188)" />
+    <ellipse cx="175" cy="172" rx="1.8" ry="3" transform="rotate(50 175 172)" />
+  </g>
+</svg>

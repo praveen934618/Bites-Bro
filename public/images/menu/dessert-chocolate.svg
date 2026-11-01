@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true">
+  <defs>
+    <radialGradient id="chocBg" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#F4AE52" stop-opacity="0.25" />
+      <stop offset="70%" stop-color="#FEF3E2" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#FDF0D9" />
+    </radialGradient>
+    <linearGradient id="chocPot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3E2723" />
+      <stop offset="50%" stop-color="#2D1810" />
+      <stop offset="100%" stop-color="#1A0D08" />
+    </linearGradient>
+    <filter id="chocDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#2A1A0E" flood-opacity="0.18" />
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="url(#chocBg)" />
+  <ellipse cx="200" cy="245" rx="90" ry="18" fill="#2A1A0E" opacity="0.15" />
+  <!-- Glass Ramekin Pot -->
+  <g filter="url(#chocDrop)">
+    <!-- Base Ramekin -->
+    <path d="M 150 140 L 158 225 C 158 238, 242 238, 242 225 L 250 140 Z" fill="#D7CCC8" opacity="0.4" stroke="rgba(255,255,255,0.7)" stroke-width="2" />
+    <!-- Chocolate Custard Fill -->
+    <path d="M 154 150 L 160 222 C 160 232, 240 232, 240 222 L 246 150 Z" fill="url(#chocPot)" />
+    <!-- Custard Surface Sheen -->
+    <ellipse cx="200" cy="150" rx="46" ry="14" fill="#4E342E" stroke="#2D1810" stroke-width="1.5" />
+    <ellipse cx="196" cy="148" rx="38" ry="9" fill="#5D4037" opacity="0.6" />
+    <path d="M 175 147 Q 195 143 218 149" stroke="#8D6E63" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7" />
+  </g>
+  <!-- Crushed Pistachio Crumble on Top -->
+  <circle cx="185" cy="146" r="3" fill="#7CB342" />
+  <circle cx="195" cy="144" r="2.5" fill="#8BC34A" />
+  <circle cx="208" cy="148" r="3" fill="#558B2F" />
+  <circle cx="215" cy="144" r="2" fill="#7CB342" />
+  <circle cx="190" cy="152" r="2.5" fill="#689F38" />
+  <!-- Golden Leaf Flake Accent -->
+  <polygon points="198,140 204,143 201,147 196,144" fill="#F4AE52" />
+</svg>

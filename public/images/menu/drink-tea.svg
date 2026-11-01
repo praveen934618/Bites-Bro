@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%" aria-hidden="true">
+  <defs>
+    <radialGradient id="teaBg" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#F4AE52" stop-opacity="0.28" />
+      <stop offset="70%" stop-color="#FEF3E2" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#FDF0D9" />
+    </radialGradient>
+    <linearGradient id="mugichaTea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D47A22" />
+      <stop offset="40%" stop-color="#A55312" />
+      <stop offset="80%" stop-color="#6E3207" />
+      <stop offset="100%" stop-color="#3D1902" />
+    </linearGradient>
+    <linearGradient id="yuzuGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEE58" />
+      <stop offset="60%" stop-color="#FDD835" />
+      <stop offset="100%" stop-color="#F57F17" />
+    </linearGradient>
+    <filter id="teaDrop" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#2A1A0E" flood-opacity="0.16" />
+    </filter>
+  </defs>
+  <rect width="400" height="300" fill="url(#teaBg)" />
+  <ellipse cx="200" cy="245" rx="75" ry="16" fill="#2A1A0E" opacity="0.14" />
+
+  <!-- Highball Glassware Container -->
+  <g filter="url(#teaDrop)">
+    <!-- Glass back/wall shadow -->
+    <path d="M 162 75 L 170 230 C 170 240, 230 240, 230 230 L 238 75 Z" fill="#EFEBE9" opacity="0.35" stroke="rgba(255,255,255,0.75)" stroke-width="2" />
+    <!-- Liquid (Roasted Barley Mugicha) -->
+    <path d="M 164 105 L 171 228 C 171 236, 229 236, 229 228 L 236 105 Z" fill="url(#mugichaTea)" opacity="0.92" />
+
+    <!-- Crystal Clear Hand-Cut Ice Cubes -->
+    <!-- Ice Cube 1 (Lower) -->
+    <g transform="translate(182, 175) rotate(12)">
+      <rect x="0" y="0" width="30" height="30" rx="4" fill="#FFFFFF" opacity="0.3" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" />
+      <line x1="3" y1="3" x2="27" y2="27" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+    </g>
+    <!-- Ice Cube 2 (Mid-Floating) -->
+    <g transform="translate(192, 132) rotate(-16)">
+      <rect x="0" y="0" width="32" height="32" rx="4" fill="#FFFFFF" opacity="0.35" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" />
+      <line x1="3" y1="29" x2="29" y2="3" stroke="rgba(255,255,255,0.4)" stroke-width="1" />
+    </g>
+    <!-- Ice Cube 3 (Upper Rim) -->
+    <g transform="translate(178, 100) rotate(8)">
+      <rect x="0" y="0" width="28" height="28" rx="3.5" fill="#FFFFFF" opacity="0.4" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" />
+    </g>
+
+    <!-- Glass Specular Highlight Sheen (Left vertical edge) -->
+    <path d="M 167 85 L 173 225" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.65" />
+    <path d="M 172 90 L 176 215" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.4" />
+
+    <!-- Yuzu Citrus Wheel on Glass Rim -->
+    <g transform="translate(225, 78)">
+      <!-- Outer Rind -->
+      <circle cx="0" cy="0" r="24" fill="url(#yuzuGold)" stroke="#FFF9C4" stroke-width="2" />
+      <circle cx="0" cy="0" r="18" fill="#FFF59D" />
+      <!-- Pulp Segments -->
+      <line x1="0" y1="-18" x2="0" y2="18" stroke="#FBC02D" stroke-width="1.6" />
+      <line x1="-18" y1="0" x2="18" y2="0" stroke="#FBC02D" stroke-width="1.6" />
+      <line x1="-13" y1="-13" x2="13" y2="13" stroke="#FBC02D" stroke-width="1.6" />
+      <line x1="-13" y1="13" x2="13" y2="-13" stroke="#FBC02D" stroke-width="1.6" />
+      <circle cx="0" cy="0" r="3.5" fill="#FFF9C4" />
+    </g>
+
+    <!-- Yuzu Citrus Peel Twist Ribbon -->
+    <path d="M 178 95 Q 165 60 190 52 Q 215 45 208 75 Q 200 95 215 110" stroke="#FDD835" stroke-width="3.5" stroke-linecap="round" fill="none" />
+    <path d="M 180 95 Q 167 60 192 52" stroke="#FFF59D" stroke-width="1.5" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Condensation droplets on glass -->
+  <circle cx="174" cy="145" r="1.8" fill="#FFFFFF" opacity="0.75" />
+  <circle cx="172" cy="165" r="2.2" fill="#FFFFFF" opacity="0.8" />
+  <circle cx="175" cy="188" r="1.6" fill="#FFFFFF" opacity="0.7" />
+  <circle cx="225" cy="155" r="2" fill="#FFFFFF" opacity="0.75" />
+  <circle cx="222" cy="180" r="2.4" fill="#FFFFFF" opacity="0.8" />
+
+  <!-- Effervescence micro-bubbles -->
+  <g fill="#FFFFFF" opacity="0.75">
+    <circle cx="188" cy="205" r="1.5" />
+    <circle cx="196" cy="195" r="2" />
+    <circle cx="205" cy="215" r="1.5" />
+    <circle cx="212" cy="185" r="1.8" />
+    <circle cx="195" cy="160" r="1.4" />
+  </g>
+</svg>

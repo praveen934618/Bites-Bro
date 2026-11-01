@@ -1,9 +1,12 @@
 import React, { useState, useEffect, Suspense } from "react";
 import Navbar from "../components/navigation/Navbar";
 import { Hero } from "../components/hero";
+import { MenuSection } from "../components/menu";
 import { NavItem } from "../types/navigation";
+import { MenuItem, CartSummary } from "../types/menu";
 import type { NavbarVerificationStudioProps } from "../dev/NavbarVerificationStudio";
 import "../styles/globals.css";
+import "../styles/menu.css";
 
 // Guard development workbench: only loaded in development builds
 
@@ -29,7 +32,16 @@ const NavbarVerificationStudio = React.lazy<
  */
 export const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("menu");
-  const [cartCount, setCartCount] = useState<number>(0);
+  // Single authoritative frontend cart state
+  const [cart, setCart] = useState<CartSummary>({
+    items: {},
+    totalCount: 0,
+    totalAmount: 0,
+  });
+
+  // Derived Navbar cart count from authoritative cart state
+  const cartCount = cart.totalCount;
+
   const [isStudioOpen, setIsStudioOpen] = useState<boolean>(() => {
     if (import.meta.env.DEV && typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
@@ -53,8 +65,43 @@ export const App: React.FC = () => {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  const scrollToMenu = () => {
+    if (typeof document !== "undefined") {
+      const menuEl = document.getElementById("menu-section");
+      if (menuEl) {
+        menuEl.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   const handleNavigate = (item: NavItem) => {
     setActiveSection(item.id);
+    if (item.id === "menu") {
+      scrollToMenu();
+    }
+  };
+
+  const handleAddToCart = (item: MenuItem) => {
+    setCart((prev) => {
+      const existing = prev.items[item.id];
+      const newQty = (existing?.quantity || 0) + 1;
+      const updatedItems = {
+        ...prev.items,
+        [item.id]: { menuItem: item, quantity: newQty },
+      };
+      return {
+        items: updatedItems,
+        totalCount: prev.totalCount + 1,
+        totalAmount: prev.totalAmount + item.price,
+      };
+    });
+  };
+
+  const handleSetCartCount = (count: number) => {
+    setCart((prev) => ({
+      ...prev,
+      totalCount: count,
+    }));
   };
 
   return (
@@ -86,7 +133,7 @@ export const App: React.FC = () => {
               activeSection={activeSection}
               onSelectSection={setActiveSection}
               cartCount={cartCount}
-              onSetCartCount={setCartCount}
+              onSetCartCount={handleSetCartCount}
               onClose={() => setIsStudioOpen(false)}
             />
           </Suspense>
@@ -100,9 +147,13 @@ export const App: React.FC = () => {
                   setActiveSection("orders");
                 } else if (route === "/me" || route === "/me#menu") {
                   setActiveSection("menu");
+                  scrollToMenu();
                 }
               }}
             />
+
+            {/* Task 03: Premium Customer Menu Section */}
+            <MenuSection onAddToCart={handleAddToCart} />
           </div>
         )}
       </main>

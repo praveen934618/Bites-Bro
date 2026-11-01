@@ -1,0 +1,1038 @@
+/* ==========================================================================
+   BitesBro — Customer Menu Stylesheet (Task 03)
+   Official Palette: Warm Cream, Golden Amber, Burnt Orange, Espresso Brown, Deep Terracotta
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Menu Section Layout
+   -------------------------------------------------------------------------- */
+.bitesbro-menu-section {
+  width: 100%;
+  background-color: var(--color-cream);
+  padding-block: var(--space-8);
+  position: relative;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .bitesbro-menu-section {
+    padding-block: var(--space-12);
+  }
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   2. Menu Section Header
+   -------------------------------------------------------------------------- */
+.menu-header {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: var(--space-8);
+}
+
+.menu-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-orange-accessible);
+  margin-bottom: var(--space-2);
+}
+
+.menu-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(212, 98, 26, 0.2);
+}
+
+.menu-title {
+  font-family: var(--font-brand);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-espresso);
+  margin: 0 0 var(--space-3);
+  text-wrap: balance;
+}
+
+.menu-subtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+  text-wrap: pretty;
+}
+
+/* Prototype Compliance Notice Card */
+.menu-disclaimer-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background-color: rgba(244, 174, 82, 0.12);
+  border: 1px solid rgba(244, 174, 82, 0.4);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-top: var(--space-4);
+  text-align: left;
+}
+
+.menu-disclaimer-tag {
+  flex-shrink: 0;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.menu-disclaimer-text {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-espresso);
+  margin: 0;
+  opacity: 0.88;
+}
+
+/* --------------------------------------------------------------------------
+   3. Menu Categories Bar (Horizontally scrollable with touch support)
+   -------------------------------------------------------------------------- */
+.menu-categories-wrapper {
+  margin-bottom: var(--space-5);
+  position: relative;
+}
+
+.menu-categories-scroll {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.menu-categories-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.menu-category-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background-color: var(--color-surface-card);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-subtle);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-standard);
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(42, 26, 14, 0.04);
+}
+
+.menu-category-tab:hover {
+  background-color: #FFFDF9;
+  color: var(--color-espresso);
+  border-color: var(--color-border-medium);
+  transform: translateY(-1px);
+}
+
+.menu-category-tab:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.menu-category-tab--active {
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  border-color: var(--color-espresso);
+  box-shadow: 0 2px 8px rgba(42, 26, 14, 0.16);
+}
+
+.menu-category-tab--active:hover {
+  background-color: var(--color-btn-primary-hover);
+  color: var(--color-cream);
+  border-color: var(--color-btn-primary-hover);
+}
+
+.menu-category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding-inline: 4px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(42, 26, 14, 0.08);
+  color: var(--color-espresso);
+}
+
+.menu-category-count--active {
+  background-color: rgba(254, 243, 226, 0.22);
+  color: var(--color-cream);
+}
+
+/* --------------------------------------------------------------------------
+   4. Menu Search & Dietary Filters
+   -------------------------------------------------------------------------- */
+.menu-search-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+  background-color: var(--color-surface-card);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 768px) {
+  .menu-search-filter-bar {
+    padding: var(--space-5);
+  }
+}
+
+.menu-search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-search-icon-adornment {
+  position: absolute;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.menu-search-input {
+  width: 100%;
+  height: 48px;
+  padding-left: 46px;
+  padding-right: 44px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-subtle);
+  background-color: #FAF5ED;
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  color: var(--color-espresso);
+  outline: none;
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.menu-search-input::placeholder {
+  color: #7A6A60;
+}
+
+.menu-search-input:focus {
+  border-color: var(--color-orange);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(212, 98, 26, 0.16);
+}
+
+.menu-search-clear-btn {
+  position: absolute;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(42, 26, 14, 0.08);
+  color: var(--color-espresso);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.menu-search-clear-btn:hover {
+  background-color: rgba(42, 26, 14, 0.18);
+}
+
+.menu-search-clear-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+}
+
+/* Dietary filter pills group */
+.menu-dietary-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.menu-dietary-label {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  margin-right: 4px;
+}
+
+.menu-dietary-pill {
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  background-color: #FAF5ED;
+  color: var(--color-text-secondary);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-standard);
+}
+
+.menu-dietary-pill:hover {
+  background-color: var(--color-hover-tint);
+  color: var(--color-espresso);
+}
+
+.menu-dietary-pill:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 1px;
+}
+
+.menu-dietary-pill--active {
+  background-color: var(--color-orange-accessible);
+  color: var(--color-cream);
+  font-weight: 600;
+}
+
+.menu-dietary-pill--active:hover {
+  background-color: #792D02;
+  color: var(--color-cream);
+}
+
+/* --------------------------------------------------------------------------
+   5. Results Summary Bar
+   -------------------------------------------------------------------------- */
+.menu-results-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-height: 28px;
+  margin-bottom: var(--space-5);
+  padding-inline: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.menu-results-count strong {
+  color: var(--color-espresso);
+  font-weight: 700;
+}
+
+.menu-clear-all-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-orange-accessible);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.menu-clear-all-link:hover {
+  color: var(--color-espresso);
+}
+
+/* --------------------------------------------------------------------------
+   6. Food Cards Grid
+   -------------------------------------------------------------------------- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 600px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Food Card Component
+   -------------------------------------------------------------------------- */
+.food-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-normal) var(--ease-out-standard),
+              box-shadow var(--duration-normal) var(--ease-out-standard);
+  position: relative;
+}
+
+.food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-medium);
+}
+
+.food-card--unavailable {
+  opacity: 0.72;
+}
+
+.food-card--unavailable:hover {
+  transform: none;
+  box-shadow: var(--shadow-card);
+}
+
+/* Card Media Container */
+.food-card-media-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: #F8EFE3;
+  overflow: hidden;
+}
+
+.food-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out-standard);
+}
+
+.food-card:hover .food-card-image {
+  transform: scale(1.04);
+}
+
+.food-card--unavailable .food-card-image {
+  filter: grayscale(45%);
+}
+
+.food-card-dietary-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  padding: 3px;
+  box-shadow: 0 1px 4px rgba(42, 26, 14, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-card-status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 1px 4px rgba(42, 26, 14, 0.12);
+}
+
+.food-card-status-badge--sold-out {
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+}
+
+.food-card-status-badge--demo {
+  background-color: rgba(254, 243, 226, 0.94);
+  color: var(--color-orange-accessible);
+  border: 1px solid rgba(212, 98, 26, 0.3);
+}
+
+.food-card-details-trigger {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(42, 26, 14, 0.1);
+  color: var(--color-espresso);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(42, 26, 14, 0.12);
+  transition: all var(--duration-fast) ease;
+}
+
+.food-card-details-trigger:hover {
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  border-color: var(--color-espresso);
+}
+
+.food-card-details-trigger:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+}
+
+/* Card Content Body */
+.food-card-content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.food-card-header {
+  margin-bottom: var(--space-2);
+}
+
+.food-card-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-2);
+}
+
+.food-card-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background-color: #FAF5ED;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.food-card-dietary-tag {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-orange-accessible);
+  background-color: rgba(244, 174, 82, 0.15);
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.food-card-title {
+  font-family: var(--font-brand);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-espresso);
+  margin: 0;
+}
+
+.food-card-description {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Card Footer */
+.food-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.food-card-price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-brand);
+  color: var(--color-espresso);
+}
+
+.food-card-currency {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-orange-accessible);
+}
+
+.food-card-price-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.food-card-calories {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-left: 4px;
+}
+
+.food-card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-standard);
+  white-space: nowrap;
+}
+
+.food-card-action-btn:hover:not(:disabled) {
+  background-color: var(--color-btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+.food-card-action-btn:active:not(:disabled) {
+  background-color: var(--color-btn-primary-active);
+  transform: translateY(0);
+}
+
+.food-card-action-btn:disabled {
+  background-color: #D6CBC4;
+  color: #7A6A60;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.food-card-action-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.food-card-action-btn--added {
+  background-color: #16845B !important;
+  color: #FFFFFF !important;
+}
+
+/* --------------------------------------------------------------------------
+   8. Food Details Modal Component
+   -------------------------------------------------------------------------- */
+.food-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(42, 26, 14, 0.68);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  box-sizing: border-box;
+  animation: modalFadeIn var(--duration-normal) var(--ease-out-standard);
+}
+
+.food-modal-dialog {
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-xl);
+  max-width: 540px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 16px 36px rgba(42, 26, 14, 0.28);
+  border: 1px solid var(--color-border-medium);
+  animation: modalScaleUp var(--duration-normal) var(--ease-out-standard);
+}
+
+.food-modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(42, 26, 14, 0.7);
+  color: var(--color-cream);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.food-modal-close-btn:hover {
+  background-color: var(--color-espresso);
+}
+
+.food-modal-close-btn:focus-visible {
+  outline: 2px solid var(--color-cream);
+  outline-offset: 2px;
+}
+
+.food-modal-media-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #F8EFE3;
+  overflow: hidden;
+}
+
+.food-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.food-modal-dietary-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.94);
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(42, 26, 14, 0.18);
+}
+
+.food-modal-sold-out-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.food-modal-content {
+  padding: var(--space-5);
+}
+
+.food-modal-header {
+  margin-bottom: var(--space-3);
+}
+
+.food-modal-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-2);
+}
+
+.food-modal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background-color: #FAF5ED;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.food-modal-title {
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-espresso);
+  margin: 0 0 var(--space-1);
+}
+
+.food-modal-price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-brand);
+  margin-top: 4px;
+}
+
+.food-modal-currency {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-orange-accessible);
+}
+
+.food-modal-price-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-espresso);
+}
+
+.food-modal-description {
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+.food-modal-section {
+  margin-bottom: var(--space-4);
+}
+
+.food-modal-section-title {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-espresso);
+  margin: 0 0 var(--space-2);
+}
+
+.food-modal-ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.food-modal-ingredient-chip {
+  background-color: #FAF5ED;
+  border: 1px solid rgba(42, 26, 14, 0.08);
+  color: var(--color-espresso);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.food-modal-allergen-alert {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-orange-accessible);
+  background-color: rgba(244, 174, 82, 0.12);
+  border-left: 3px solid var(--color-orange-accessible);
+  padding: 8px 12px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 0;
+}
+
+.food-modal-allergen-none {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.food-modal-demo-notice {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #7A6A60;
+  background-color: #FAF5ED;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-4);
+}
+
+.food-modal-demo-notice span {
+  font-weight: 700;
+  color: var(--color-espresso);
+}
+
+.food-modal-footer {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.food-modal-add-btn {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  font-family: var(--font-ui);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-standard);
+}
+
+.food-modal-add-btn:hover:not(:disabled) {
+  background-color: var(--color-btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+.food-modal-add-btn:disabled {
+  background-color: #D6CBC4;
+  color: #7A6A60;
+  cursor: not-allowed;
+}
+
+.food-modal-add-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Menu Empty State Component
+   -------------------------------------------------------------------------- */
+.menu-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-10) var(--space-4);
+  background-color: var(--color-surface-card);
+  border-radius: var(--radius-xl);
+  border: 1px dashed var(--color-border-medium);
+  margin-top: var(--space-4);
+}
+
+.menu-empty-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(244, 174, 82, 0.2);
+  color: var(--color-orange-accessible);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+}
+
+.menu-empty-title {
+  font-family: var(--font-brand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  margin: 0 0 var(--space-2);
+}
+
+.menu-empty-description {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 440px;
+  margin: 0 0 var(--space-5);
+}
+
+.menu-empty-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: var(--color-espresso);
+  color: var(--color-cream);
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-standard);
+}
+
+.menu-empty-reset-btn:hover {
+  background-color: var(--color-btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+.menu-empty-reset-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Animations & Reduced Motion Compliance
+   -------------------------------------------------------------------------- */
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-card,
+  .food-card-image,
+  .food-category-tab,
+  .food-card-action-btn,
+  .food-modal-backdrop,
+  .food-modal-dialog {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
