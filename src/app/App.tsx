@@ -1,12 +1,14 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useCallback } from "react";
 import Navbar from "../components/navigation/Navbar";
 import { Hero } from "../components/hero";
 import { MenuSection } from "../components/menu";
+import { CartSection } from "../components/cart";
 import { NavItem } from "../types/navigation";
 import { MenuItem, CartSummary } from "../types/menu";
 import type { NavbarVerificationStudioProps } from "../dev/NavbarVerificationStudio";
 import "../styles/globals.css";
 import "../styles/menu.css";
+import "../styles/cart.css";
 
 // Guard development workbench: only loaded in development builds
 
@@ -31,7 +33,13 @@ const NavbarVerificationStudio = React.lazy<
  * - Clean customer layout container ready for subsequent feature sections
  */
 export const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<string>("menu");
+  const [activeSection, setActiveSection] = useState<string>(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#cart") {
+      return "cart";
+    }
+    return "menu";
+  });
+
   // Single authoritative frontend cart state
   const [cart, setCart] = useState<CartSummary>({
     items: {},
@@ -52,34 +60,61 @@ export const App: React.FC = () => {
     return false;
   });
 
-  // Keep hash in sync only during development
+  // Keep section & studio in sync with browser hash
   useEffect(() => {
-    if (!import.meta.env.DEV) return;
+    if (typeof window === "undefined") return;
 
     const handleHashChange = () => {
-      if (window.location.hash === "#dev-studio") {
+      const currentHash = window.location.hash;
+      if (import.meta.env.DEV && currentHash === "#dev-studio") {
         setIsStudioOpen(true);
+      } else if (currentHash === "#cart") {
+        setActiveSection("cart");
+      } else if (currentHash === "#menu" || currentHash === "" || currentHash === "#") {
+        setActiveSection("menu");
+      } else if (currentHash === "#orders") {
+        setActiveSection("orders");
       }
     };
+
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  const scrollToMenu = () => {
+  const scrollToMenu = useCallback(() => {
     if (typeof document !== "undefined") {
       const menuEl = document.getElementById("menu-section");
       if (menuEl) {
         menuEl.scrollIntoView({ behavior: "smooth" });
       }
     }
-  };
+  }, []);
 
   const handleNavigate = (item: NavItem) => {
     setActiveSection(item.id);
-    if (item.id === "menu") {
+    if (item.id === "cart") {
+      if (typeof window !== "undefined" && window.location.hash !== "#cart") {
+        window.location.hash = "#cart";
+      }
+    } else if (item.id === "menu") {
+      if (typeof window !== "undefined" && window.location.hash === "#cart") {
+        window.location.hash = "#menu";
+      }
       scrollToMenu();
+    } else if (item.id === "orders") {
+      if (typeof window !== "undefined") {
+        window.location.hash = "#orders";
+      }
     }
   };
+
+  const handleBrowseMenu = useCallback(() => {
+    setActiveSection("menu");
+    if (typeof window !== "undefined") {
+      window.location.hash = "#menu";
+    }
+    scrollToMenu();
+  }, [scrollToMenu]);
 
   const handleAddToCart = (item: MenuItem) => {
     setCart((prev) => {
@@ -89,13 +124,89 @@ export const App: React.FC = () => {
         ...prev.items,
         [item.id]: { menuItem: item, quantity: newQty },
       };
+      const count = Object.values(updatedItems).reduce((sum, i) => sum + i.quantity, 0);
+      const amount = Object.values(updatedItems).reduce(
+        (sum, i) => sum + i.quantity * i.menuItem.price,
+        0
+      );
       return {
         items: updatedItems,
-        totalCount: prev.totalCount + 1,
-        totalAmount: prev.totalAmount + item.price,
+        totalCount: count,
+        totalAmount: amount,
       };
     });
   };
+
+  const handleUpdateQuantity = useCallback((itemId: string, newQty: number) => {
+    setCart((prev) => {
+      const existing = prev.items[itemId];
+      if (!existing) return prev;
+
+      if (newQty <= 0) {
+        const { [itemId]: _, ...remainingItems } = prev.items;
+        const count = Object.values(remainingItems).reduce(
+          (sum, i) => sum + i.quantity,
+          0
+        );
+        const amount = Object.values(remainingItems).reduce(
+          (sum, i) => sum + i.quantity * i.menuItem.price,
+          0
+        );
+        return {
+          items: remainingItems,
+          totalCount: count,
+          totalAmount: amount,
+        };
+      }
+
+      const updatedItems = {
+        ...prev.items,
+        [itemId]: { ...existing, quantity: newQty },
+      };
+      const count = Object.values(updatedItems).reduce(
+        (sum, i) => sum + i.quantity,
+        0
+      );
+      const amount = Object.values(updatedItems).reduce(
+        (sum, i) => sum + i.quantity * i.menuItem.price,
+        0
+      );
+      return {
+        items: updatedItems,
+        totalCount: count,
+        totalAmount: amount,
+      };
+    });
+  }, []);
+
+  const handleRemoveItem = useCallback((itemId: string) => {
+    setCart((prev) => {
+      const existing = prev.items[itemId];
+      if (!existing) return prev;
+      const { [itemId]: _, ...remainingItems } = prev.items;
+      const count = Object.values(remainingItems).reduce(
+        (sum, i) => sum + i.quantity,
+        0
+      );
+      const amount = Object.values(remainingItems).reduce(
+        (sum, i) => sum + i.quantity * i.menuItem.price,
+        0
+      );
+      return {
+        items: remainingItems,
+        totalCount: count,
+        totalAmount: amount,
+      };
+    });
+  }, []);
+
+  const handleClearCart = useCallback(() => {
+    setCart({
+      items: {},
+      totalCount: 0,
+      totalAmount: 0,
+    });
+  }, []);
 
   const handleSetCartCount = (count: number) => {
     setCart((prev) => ({
@@ -137,6 +248,15 @@ export const App: React.FC = () => {
               onClose={() => setIsStudioOpen(false)}
             />
           </Suspense>
+        ) : activeSection === "cart" ? (
+          /* Task 04: Premium Customer Cart Experience */
+          <CartSection
+            cart={cart}
+            onUpdateQuantity={handleUpdateQuantity}
+            onRemoveItem={handleRemoveItem}
+            onClearCart={handleClearCart}
+            onBrowseMenu={handleBrowseMenu}
+          />
         ) : (
           /* Production Customer Homepage */
           <div className="bitesbro-homepage">
@@ -145,8 +265,16 @@ export const App: React.FC = () => {
               onNavigate={(route) => {
                 if (route.includes("#orders")) {
                   setActiveSection("orders");
+                } else if (route.includes("#cart")) {
+                  setActiveSection("cart");
+                  if (typeof window !== "undefined") {
+                    window.location.hash = "#cart";
+                  }
                 } else if (route === "/me" || route === "/me#menu") {
                   setActiveSection("menu");
+                  if (typeof window !== "undefined") {
+                    window.location.hash = "#menu";
+                  }
                   scrollToMenu();
                 }
               }}

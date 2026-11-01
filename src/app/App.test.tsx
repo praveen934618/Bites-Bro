@@ -1,8 +1,16 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('App Shell Integration', () => {
+  beforeEach(() => {
+    window.history.replaceState(null, '', '/');
+  });
+
+  afterEach(() => {
+    window.history.replaceState(null, '', '/');
+  });
+
   it('renders skip link, customer navbar, homepage hero section, and menu section', () => {
     render(<App />);
 
@@ -47,5 +55,89 @@ describe('App Shell Integration', () => {
     const cartCountBadge = screen.getByLabelText(/1 items in cart/i);
     expect(cartCountBadge).toBeInTheDocument();
     expect(cartCountBadge).toHaveTextContent('1');
+  });
+
+  it('navigates to customer cart view when clicking Navbar cart icon', () => {
+    render(<App />);
+
+    // Add an item first
+    const addBtns = screen.getAllByRole('button', { name: /Add .* to cart/i });
+    fireEvent.click(addBtns[0]);
+
+    // Click on Navbar Cart link
+    const cartLink = screen.getByRole('link', { name: /View cart/i });
+    fireEvent.click(cartLink);
+
+    // Cart section is rendered
+    expect(screen.getByRole('heading', { level: 1, name: /Your Food Cart/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Estimated Summary/i })).toBeInTheDocument();
+
+    // Verify item is present in Cart
+    expect(screen.getByRole('region', { name: /Dishes in your cart/i })).toBeInTheDocument();
+  });
+
+  it('preserves cart contents when switching back and forth between Menu and Cart', () => {
+    render(<App />);
+
+    // Add first dish
+    const addBtns = screen.getAllByRole('button', { name: /Add .* to cart/i });
+    fireEvent.click(addBtns[0]);
+
+    // Navigate to Cart
+    const cartLink = screen.getByRole('link', { name: /View cart/i });
+    fireEvent.click(cartLink);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Your Food Cart/i })).toBeInTheDocument();
+
+    // Increase quantity in Cart to 2
+    const increaseBtns = screen.getAllByRole('button', { name: /Increase quantity/i });
+    fireEvent.click(increaseBtns[0]);
+
+    // Navbar badge updates to 2
+    expect(screen.getByLabelText(/2 items in cart/i)).toHaveTextContent('2');
+
+    // Click "Back to Menu"
+    const backBtn = screen.getByRole('button', { name: /Back to food menu/i });
+    fireEvent.click(backBtn);
+
+    // Menu is visible again
+    expect(screen.getByRole('heading', { level: 2, name: /Explore Our Menu/i })).toBeInTheDocument();
+
+    // Navbar still has 2 items
+    expect(screen.getByLabelText(/2 items in cart/i)).toHaveTextContent('2');
+
+    // Return to Cart
+    fireEvent.click(screen.getByRole('link', { name: /View cart/i }));
+
+    // Cart still has the items with quantity 2
+    expect(screen.getByLabelText(/Current quantity: 2/i)).toBeInTheDocument();
+  });
+
+  it('clears cart and displays empty state when clicking Clear Cart', () => {
+    render(<App />);
+
+    // Add dish
+    const addBtns = screen.getAllByRole('button', { name: /Add .* to cart/i });
+    fireEvent.click(addBtns[0]);
+
+    // Navigate to Cart
+    fireEvent.click(screen.getByRole('link', { name: /View cart/i }));
+
+    // Click "Clear Cart"
+    const clearBtn = screen.getByRole('button', { name: /Clear all items from cart/i });
+    fireEvent.click(clearBtn);
+
+    // Empty state is rendered
+    expect(screen.getByRole('heading', { level: 2, name: /Your Cart is Empty/i })).toBeInTheDocument();
+
+    // Navbar cart badge is gone (0 count)
+    expect(screen.queryByLabelText(/items in cart/i)).not.toBeInTheDocument();
+  });
+
+  it('renders cart directly if initial hash is #cart', () => {
+    window.history.replaceState(null, '', '/#cart');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Your Food Cart/i })).toBeInTheDocument();
   });
 });
