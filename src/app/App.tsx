@@ -3,12 +3,14 @@ import Navbar from "../components/navigation/Navbar";
 import { Hero } from "../components/hero";
 import { MenuSection } from "../components/menu";
 import { CartSection } from "../components/cart";
+import { OrdersSection } from "../components/orders";
 import { NavItem } from "../types/navigation";
 import { MenuItem, CartSummary } from "../types/menu";
 import type { NavbarVerificationStudioProps } from "../dev/NavbarVerificationStudio";
 import "../styles/globals.css";
 import "../styles/menu.css";
 import "../styles/cart.css";
+import "../styles/orders.css";
 
 // Guard development workbench: only loaded in development builds
 
@@ -34,10 +36,19 @@ const NavbarVerificationStudio = React.lazy<
  */
 export const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>(() => {
-    if (typeof window !== "undefined" && window.location.hash === "#cart") {
-      return "cart";
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash === "#cart") return "cart";
+      if (hash === "#orders" || hash.startsWith("#orders/")) return "orders";
     }
     return "menu";
+  });
+
+  const [selectedOrderId, setSelectedOrderId] = useState<string | null>(() => {
+    if (typeof window !== "undefined" && window.location.hash.startsWith("#orders/")) {
+      return window.location.hash.replace("#orders/", "").trim() || null;
+    }
+    return null;
   });
 
   // Single authoritative frontend cart state
@@ -70,10 +81,17 @@ export const App: React.FC = () => {
         setIsStudioOpen(true);
       } else if (currentHash === "#cart") {
         setActiveSection("cart");
-      } else if (currentHash === "#menu" || currentHash === "" || currentHash === "#") {
-        setActiveSection("menu");
+        setSelectedOrderId(null);
       } else if (currentHash === "#orders") {
         setActiveSection("orders");
+        setSelectedOrderId(null);
+      } else if (currentHash.startsWith("#orders/")) {
+        const orderId = currentHash.replace("#orders/", "").trim() || null;
+        setActiveSection("orders");
+        setSelectedOrderId(orderId);
+      } else if (currentHash === "#menu" || currentHash === "" || currentHash === "#") {
+        setActiveSection("menu");
+        setSelectedOrderId(null);
       }
     };
 
@@ -92,17 +110,18 @@ export const App: React.FC = () => {
 
   const handleNavigate = (item: NavItem) => {
     setActiveSection(item.id);
+    setSelectedOrderId(null);
     if (item.id === "cart") {
       if (typeof window !== "undefined" && window.location.hash !== "#cart") {
         window.location.hash = "#cart";
       }
     } else if (item.id === "menu") {
-      if (typeof window !== "undefined" && window.location.hash === "#cart") {
+      if (typeof window !== "undefined" && window.location.hash !== "#menu" && window.location.hash !== "") {
         window.location.hash = "#menu";
       }
       scrollToMenu();
     } else if (item.id === "orders") {
-      if (typeof window !== "undefined") {
+      if (typeof window !== "undefined" && window.location.hash !== "#orders") {
         window.location.hash = "#orders";
       }
     }
@@ -110,11 +129,23 @@ export const App: React.FC = () => {
 
   const handleBrowseMenu = useCallback(() => {
     setActiveSection("menu");
+    setSelectedOrderId(null);
     if (typeof window !== "undefined") {
       window.location.hash = "#menu";
     }
     scrollToMenu();
   }, [scrollToMenu]);
+
+  const handleSelectOrder = useCallback((orderId: string | null) => {
+    setSelectedOrderId(orderId);
+    if (typeof window !== "undefined") {
+      if (orderId) {
+        window.location.hash = `#orders/${orderId}`;
+      } else {
+        window.location.hash = "#orders";
+      }
+    }
+  }, []);
 
   const handleAddToCart = (item: MenuItem) => {
     setCart((prev) => {
@@ -257,6 +288,13 @@ export const App: React.FC = () => {
             onClearCart={handleClearCart}
             onBrowseMenu={handleBrowseMenu}
           />
+        ) : activeSection === "orders" ? (
+          /* Task 05: Premium Customer Orders Experience */
+          <OrdersSection
+            selectedOrderId={selectedOrderId}
+            onSelectOrder={handleSelectOrder}
+            onBrowseMenu={handleBrowseMenu}
+          />
         ) : (
           /* Production Customer Homepage */
           <div className="bitesbro-homepage">
@@ -265,13 +303,19 @@ export const App: React.FC = () => {
               onNavigate={(route) => {
                 if (route.includes("#orders")) {
                   setActiveSection("orders");
+                  setSelectedOrderId(null);
+                  if (typeof window !== "undefined") {
+                    window.location.hash = "#orders";
+                  }
                 } else if (route.includes("#cart")) {
                   setActiveSection("cart");
+                  setSelectedOrderId(null);
                   if (typeof window !== "undefined") {
                     window.location.hash = "#cart";
                   }
                 } else if (route === "/me" || route === "/me#menu") {
                   setActiveSection("menu");
+                  setSelectedOrderId(null);
                   if (typeof window !== "undefined") {
                     window.location.hash = "#menu";
                   }

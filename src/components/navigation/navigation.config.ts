@@ -23,7 +23,7 @@ export const NAVBAR_CONFIG: NavbarConfig = {
       id: 'orders',
       label: 'Orders',
       href: '/me#orders',
-      description: 'Track live status and order history',
+      description: 'View demonstration order history and status',
       icon: 'orders',
     },
   ],

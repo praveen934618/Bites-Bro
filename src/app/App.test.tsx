@@ -140,4 +140,99 @@ describe('App Shell Integration', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: /Your Food Cart/i })).toBeInTheDocument();
   });
+
+  /* --------------------------------------------------------------------------
+     Customer Orders Experience Integration Tests (Task 05)
+     -------------------------------------------------------------------------- */
+  it('navigates to customer orders view when clicking Navbar orders link', () => {
+    render(<App />);
+
+    // Click on Navbar Orders link
+    const ordersLink = screen.getByRole('link', { name: 'Orders' });
+    expect(ordersLink).toBeInTheDocument();
+    fireEvent.click(ordersLink);
+
+    // Orders page heading and demonstration notice are displayed
+    expect(screen.getByRole('heading', { level: 1, name: /Your Orders/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('note', { name: /Demonstration Orders Notice/i })
+    ).toHaveTextContent(/Demonstration order records for prototype preview/i);
+  });
+
+  it('renders orders directly if initial hash is #orders', () => {
+    window.history.replaceState(null, '', '/#orders');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Your Orders/i })).toBeInTheDocument();
+    expect(screen.getByRole('region', { name: /Order history records/i })).toBeInTheDocument();
+  });
+
+  it('renders order detail directly if initial hash is #orders/:id', () => {
+    window.history.replaceState(null, '', '/#orders/BB-ORD-9420');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Order BB-ORD-9420/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Back to orders list/i })).toBeInTheDocument();
+  });
+
+  it('navigates from orders list to order detail and back to orders list', () => {
+    window.history.replaceState(null, '', '/#orders');
+    render(<App />);
+
+    // Click "View Details" on the first order
+    const viewBtn = screen.getByRole('button', { name: /View order details for BB-ORD-9420/i });
+    fireEvent.click(viewBtn);
+
+    // Order detail view is rendered
+    expect(screen.getByRole('heading', { level: 1, name: /Order BB-ORD-9420/i })).toBeInTheDocument();
+
+    // Click "Back to Orders"
+    const backBtn = screen.getByRole('button', { name: /Back to orders list/i });
+    fireEvent.click(backBtn);
+
+    // Returned to orders list
+    expect(screen.getByRole('heading', { level: 1, name: /Your Orders/i })).toBeInTheDocument();
+  });
+
+  it('preserves cart state when switching between Menu, Cart, and Orders', () => {
+    render(<App />);
+
+    // 1. Add item from Menu
+    const addBtns = screen.getAllByRole('button', { name: /Add .* to cart/i });
+    fireEvent.click(addBtns[0]);
+
+    // Verify cart count is 1
+    expect(screen.getByLabelText(/1 items in cart/i)).toBeInTheDocument();
+
+    // 2. Navigate to Orders
+    const ordersLink = screen.getByRole('link', { name: 'Orders' });
+    fireEvent.click(ordersLink);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Your Orders/i })).toBeInTheDocument();
+
+    // Cart badge in navbar still indicates 1 item
+    expect(screen.getByLabelText(/1 items in cart/i)).toBeInTheDocument();
+
+    // 3. Navigate to Cart
+    const cartLink = screen.getByRole('link', { name: /View cart/i });
+    fireEvent.click(cartLink);
+
+    expect(screen.getByRole('heading', { level: 1, name: /Your Food Cart/i })).toBeInTheDocument();
+    expect(screen.getByLabelText(/Current quantity: 1/i)).toBeInTheDocument();
+
+    // 4. Return to Menu via Browse Menu button
+    const backMenuBtn = screen.getByRole('button', { name: /Back to food menu/i });
+    fireEvent.click(backMenuBtn);
+
+    expect(screen.getByRole('heading', { level: 2, name: /Explore Our Menu/i })).toBeInTheDocument();
+    expect(screen.getByLabelText(/1 items in cart/i)).toBeInTheDocument();
+  });
+
+  it('renders Order Not Found when deep linking to non-existent order id', () => {
+    window.history.replaceState(null, '', '/#orders/BB-NON-EXISTENT-ID');
+    render(<App />);
+
+    expect(screen.getByRole('heading', { level: 2, name: /Order Not Found/i })).toBeInTheDocument();
+    expect(screen.getByText('BB-NON-EXISTENT-ID')).toBeInTheDocument();
+  });
 });
