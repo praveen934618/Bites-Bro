@@ -15,3 +15,6 @@
 - **Brand Typography:** Deployed with Google Fonts `Bricolage Grotesque` and `IBM Plex Sans` with system sans-serif fallbacks.
 - **Role Extensibility:** Navigation configuration is structured by role (`customer`, `kitchen`, `admin`, `finance`), with customer-facing navigation active for Task 01.
 
+## Task 06 — Phase 0 Approval Framework (Detailed in docs/PHASE_0_APPROVALS.md)
+- Formal approval checklist compiled covering Customer Authentication, Kitchen Staff Roles, Administrator Permissions, Payment Checker Responsibilities, Privacy & DPDP Act Compliance, Cancellation & Refund Policies, Payment Evidence Verification, Retention & Disaster Recovery, and Deployment Environments.
+- All unresolved business/legal questions are cataloged with explicit **PENDING CLIENT APPROVAL** status tags to prevent premature production assumptions.
